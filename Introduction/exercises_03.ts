@@ -42,4 +42,65 @@ interface Product {
 
 }
 
-function mapById(products: Product[], )
+interface Product {
+    id: string,
+    name: string,
+    price: number
+}
+
+function filterByMinPrice(products: Product[], minPrice: number): Product[] {
+    return products.filter(product => product.price >= minPrice);
+}
+
+
+interface Users {
+    name: string,
+    isAdmin: boolean,
+}
+
+function getUserNames(users: Users[]): string[] {
+    return users.map(user => user.name);
+}
+
+function formatUsers(users: Users[]): string[] {
+    return users.map(user => `${user.name} (${user.isAdmin ? 'Admin' : 'User'})`)
+}
+
+function wrapArray<T>(value: T): T[] {
+    return value[];
+}
+
+
+function getFirstItem<T>(item: T[]): T | undefined {
+    return item[0];
+}
+
+
+interface Product {
+    id: string;
+    inStock: boolean
+}
+
+function isAvaliable(products: Product[], id:string): boolean {
+    return products.some(p => p.id === id  && p.inStock);
+}
+
+
+interface ApiRenspose<T> {
+    data: TemplateStringsArray,
+    success: boolean,
+    error: string | null,
+}
+
+function successResposne<T>(data: T): ApiRenspose<T> {
+    return {
+        data,
+        success: true,
+        error: null,
+    };
+}
+
+function countAdminUsers(users: User[]): number {
+    return users.filter(user => user.isAdmin).length;
+}
+
