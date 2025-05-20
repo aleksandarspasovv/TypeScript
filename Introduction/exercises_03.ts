@@ -4,7 +4,7 @@ interface User {
 }
 
 const users: User[] = [
-    {name: 'Ivan', isAdmin: false},
+    {name: 'Magi', isAdmin: false},
     {name: 'Alex', isAdmin: true},
 ]
 
@@ -104,3 +104,39 @@ function countAdminUsers(users: User[]): number {
     return users.filter(user => user.isAdmin).length;
 }
 
+// Capitalize User Names
+
+function capitalizeUserNames(users: User[]): string[] {
+    return users.map(user => user.name.charAt(0).toLocaleUpperCase() + user.name.slice(1));
+}
+
+// Format User Labels
+
+function formatUsersTwo(users: User[]): string[] {
+    return users.map(u => `${u.name} (${u.isAdmin ? 'Admin' : 'User'})`);
+}
+
+// Validate Currency Code
+
+function isCurrency(code: string): code is Currency {
+    return ['USD', 'BGN', 'EUR'].includes(code);
+}
+
+
+// Deep Clone Array
+
+function deepCloneArray<T>(arr: T[]): T[] {
+    return arr.map(item => JSON.parse(JSON.stringify(item)))
+}
+
+// Merge Two Objects
+
+function mergeObjects<T, U>(a: T, b: U): T & U {
+    return {...a, ...b};
+}
+
+//  Get Unique Values from Array
+
+function getUniqueValuesFromArray(items: string[]): string[] {
+    return [...new Set(items)];
+}
