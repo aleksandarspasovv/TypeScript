@@ -140,3 +140,11 @@ function mergeObjects<T, U>(a: T, b: U): T & U {
 function getUniqueValuesFromArray(items: string[]): string[] {
     return [...new Set(items)];
 }
+
+
+// Exclude Admin Users
+
+function excludeAdminUsers(users: User[]): User[] {
+    return users.filter(u => !u.isAdmin);
+}
+
