@@ -148,3 +148,77 @@ function excludeAdminUsers(users: User[]): User[] {
     return users.filter(u => !u.isAdmin);
 }
 
+
+// Extract Emails
+
+interface UserWithEmail extends User {
+    email: string;
+}
+
+function getValidEmails(users: UserWithEmail[]): string[] {
+    return users.map(u => u.email).filter(inValidEmail)
+}
+
+
+// Infer type on input
+
+function getType(value: unknown): string {
+    if (typeof value === 'string') return 'string';
+    if (typeof value === 'number') return 'number';
+    if (typeof value === 'boolean') return 'boolean';
+    return 'unknown';
+}
+
+// Add new product with ID Generator
+
+function createProdduct(name: string, price: number): Product {
+    return {
+        id: Math.random().toString(36).slice(2),
+        price,
+    };
+
+}
+
+//Group by Property ????????????
+
+function groupBy<T, K extends keyof T>(items: T[], key: K): Record<string, T[]> {
+  return items.reduce((acc, item) => {
+    const groupKey = String(item[key]);
+    if (!acc[groupKey]) acc[groupKey] = [];
+    acc[groupKey].push(item);
+    return acc;
+  }, {} as Record<string, T[]>);
+}
+
+
+// Reverse Mapping
+
+function reverseMapping(obj: Record<string, string>): Record<string, string> {
+    const result: Record<string, string> = {};
+
+    for(const key in obj) {
+        result[obj][key] = key;
+    }
+
+    return result
+}
+
+// Calculate Total Price 
+
+function totalPrice(products: Product[]): number {
+    return products.reduce((sum, p) => sum + p.price, 0);
+}
+
+
+// Update Product Price by ID
+
+function updateProductById(products: Product[], id: string, newPrice: number): Product[] {
+    return products.map(p => p.id === id ? {...p, price: newPrice} : p);
+}
+
+//Create Tuple
+
+function createTuple<A, B>(a: A, b: B): [A, B] {
+    return [a, b];
+}
+
