@@ -88,96 +88,141 @@ function Opposite(dir: Direction): Direction {
 
 // 8.
 // Write a function that accepts a string and returns it reversed.
-function reverseString(str: string): string {
-  // Your code here
+
+function reverseString(word: string): string {
+  return word.split('').reverse().join('');
 }
+
 
 // 9.
 // Define an interface for a Rectangle with width and height.
 // Write a function to calculate its area.
+
 interface Rectangle {
-  // Your code here
+  width: number;
+  height: number;
 }
-function area(rect: Rectangle): number {
-  // Your code here
+
+function calculateArea(rectangle: Rectangle): number {
+  return rectangle.height * rectangle.width;
 }
 
 // 10.
 // Create a function that takes an array of strings and returns an object
 // mapping each string to its length.
-function mapToLengths(arr: string[]): Record<string, number> {
-  // Your code here
+
+function arrayOfStrings(arr: string[]): Record<string, number> {
+  const result: Record<string, number> = {};
+  for (const s of arr) {
+    result[s] = s.length;
+  }
+
+  return result;
 }
+
 
 // 11.
 // Write a type guard function that checks if a value is a number.
-function isNumber(value: unknown): value is number {
-  // Your code here
+
+function isNumber(parameter: unknown): boolean {
+  return typeof parameter === 'number';
 }
+
 
 // 12.
 // Define an interface Car with make, model, and year.
 // Write a function that filters cars newer than a given year.
+
 interface Car {
-  // Your code here
+  make: string;
+  model: string;
+  year: number;
 }
-function filterNewCars(cars: Car[], year: number): Car[] {
-  // Your code here
+
+function filterCars(cars: Car[], year: number): Car[] {
+  return cars.filter(c => c.year > year);
 }
+
 
 // 13.
 // Write a function that takes string | number and returns its string representation.
-function toString(value: string | number): string {
-  // Your code here
+
+function stringOrNumber(type: string | number): string {
+  return type.toString();
 }
+
+
 
 // 14.
 // Create a function that returns true if a string is a palindrome,
 // ignoring case and spaces.
+
 function isPalindrome(str: string): boolean {
-  // Your code here
+  const cleaned = str.toLowerCase().replace(/\s+/g, '');
+  return cleaned === cleaned.split('').reverse().join('');
 }
+
 
 // 15.
 // Define a type alias for a tuple of two numbers representing coordinates.
 // Write a function that adds two such tuples.
-type Coordinates = [number, number];
-function addCoords(a: Coordinates, b: Coordinates): Coordinates {
-  // Your code here
+
+type Cordinates = [number, number];
+
+function addTwoPoints(a: Cordinates, b: Cordinates): Cordinates {
+  return [a[0] + b[0], a[1] + b[1]];
 }
+
 
 // 16.
 // Write a function that takes an array of booleans and returns
 // the count of true values.
-function countTrue(arr: boolean[]): number {
-  // Your code here
+
+function countOfTrues(booleans: boolean[]): number {
+  return booleans.filter(b => b).length();
 }
+
 
 // 17.
 // Define an interface Student with name and optional grade.
 // Write a function that filters students with grades above a threshold.
+
+
 interface Student {
-  // Your code here
+  name: string;
+  grade?: number;
 }
-function filterTopStudents(students: Student[], threshold: number): Student[] {
-  // Your code here
+
+function filterStudents(students: Student[], threshold: number) {
+  return students.filter(student => (student.grade?? 0) > threshold);
 }
+
 
 // 18.
 // Write a function that merges two arrays and removes duplicates.
-function mergeUnique<T>(arr1: T[], arr2: T[]): T[] {
-  // Your code here
+
+
+function mergeArrays<T>(arr1: T[], arr2: T[]): T[] {
+  return Array.from(new Set([...arr1, ...arr2]))
 }
+
 
 // 19.
 // Define an interface User with id, email, and optional phone.
 // Write a function that formats contact info into a string.
+
 interface User {
-  // Your code here
+  id: number;
+  emai: string;
+  phone?: number;
 }
-function formatContact(user: User): string {
-  // Your code here
+
+function formatUser(user: User): string {
+  return user.phone? `${user.emai} ${user.phone}` : user.emai;
 }
+
+
+
 
 // 20.
 // Create a function that takes an object and returns its keys as a string array.
