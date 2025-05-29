@@ -1,26 +1,99 @@
 // 1. Write a function that finds the second largest number in an array of numbers.
 
 function secondLargestNumberInArray(arr: number[]): number {
-    return 
+    const sortedNumbers = [...arr].sort((a,b) => b - a);
+    return sortedNumbers[1];
 }
 
-// 2. Create an interface `Student` with properties `name`, `age`, and `grades` (array of numbers). Write a function that calculates the average grade of a student.
+// 2. Create an interface `Student` with properties `name`, `age`, and `grades`
+//  (array of numbers). Write a function that calculates the average grade of a student.
 
-// 3. Write a function that accepts an array of numbers and returns the sum of the even numbers.
+interface Student {
+  name: string;
+  age: number;
+  grades: number[];
 
-// 4. Create an enum `Role` with `Admin`, `Editor`, and `Viewer`. Write a function that checks if a user has admin privileges.
+}
 
-// 5. Write a function that accepts an array of strings and returns the longest string.
+function averageGradeOfStudent(student: Student): number {
+  const totalGradesSum = student.grades.reduce((acc, grade) => acc + grade, 0);
+  return totalGradesSum / student.grades.length;
+}
 
-// 6. Define an interface `Rectangle` with properties `width` and `height`. Write a function that checks if the rectangle is a square.
+// 3. Write a function that accepts an array of numbers
+//  and returns the sum of the even numbers.
 
-// 7. Write a function that filters out strings that have more than 5 characters from an array.
+function evenArrayNumbers(arr: number[]): number {
+  const evenNumbers = arr.filter(a => a % 2 === 0);
+  return evenNumbers.reduce((acc, num) => acc + num, 0)
+}
 
-// 8. Write a function that returns the index of the first occurrence of a given value in an array.
+// 4. Create an enum `Role` with `Admin`, `Editor`,
+//  and `Viewer`. Write a function that checks if a user has admin privileges.
 
-// 9. Create a function that accepts an array of numbers and returns a new array with each number squared.
+enum Role {
+  Role2,
+  Admin2,
+  Editor2,
+  Viewer2,
+}
 
-// 10. Define a type alias `Color` as a string literal type `"red" | "green" | "blue"`. Write a function that accepts a color and returns a message.
+function checkAdminPrivileges(role: Role): boolean {
+  return role === Role.Admin2
+}
+
+
+// 5. Write a function that accepts an array
+//  of strings and returns the longest string.
+
+function longestString(arr: string[]): string {
+  return arr.reduce((current, longest) => current.length > longest.length ? current : longest, '');
+}
+
+// 6. Define an interface `Rectangle` with properties
+//  `width` and `height`. Write a function that checks if the rectangle is a square.
+
+interface Rectange {
+  width: number;
+  height: number;
+}
+
+function checkRectangeIfSquare(obj: Rectange): boolean {
+  if (obj.width == obj.height) {
+    return true
+  } else return false
+}
+
+// 7. Write a function that filters out strings
+//  that have more than 5 characters from an array.
+
+function filterStrinsgFromArray(arr: string[]): string[] {
+  return arr.filter(word => word.length >= 5);
+}
+
+// 8. Write a function that returns the index
+//  of the first occurrence of a given value in an array.
+
+function findIndex2<T>(value: T, arr: T[]): number {
+  return arr.indexOf(value);
+}
+
+// 9. Create a function that accepts an array of
+//  numbers and returns a new array with each number squared.
+
+function eachNumberSquared(arr: number[]): number[] {
+  return arr.map(a => Math.sqrt(a));
+}
+
+// 10. Define a type alias `Color` as a string
+//  literal type `"red" | "green" | "blue"`.
+//  Write a function that accepts a color and returns a message.
+
+type Color2 = 'red' | 'green' | 'blue';
+
+function acceptColor(color: Color2): string {
+  return `Your color of choice is ${color}`
+}
 
 // 11. Write a function that finds the sum of the digits in a number.
 
