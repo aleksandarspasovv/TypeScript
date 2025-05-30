@@ -101,43 +101,159 @@ function findTheSumOfDigits(num: number): number {
   return num.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);
 }
 
-// 12. Create an interface `Person` with `firstName`, `lastName`, and `age`. Write a function that sorts a list of people by age.
+// 12. Create an interface `Person` with `firstName`,
+//  `lastName`, and `age`. Write a function that sorts
+//  a list of people by age.
 
-// 13. Write a function that accepts an array of numbers and returns the product of all the numbers.
+interface Person {
+  firstName: string;
+  lastName: string;
+  age: number;
+}
 
-// 14. Write a function that checks if a string is a valid email address.
+function sortPeopleByAge2(people: Person[]): Person[] {
+  return people.sort((a, b) => a.age - b.age);
+}
 
-// 15. Write a function that accepts a string and returns it in reverse order.
+// 13. Write a function that accepts an array
+//  of numbers and returns the product of all the numbers.
+
+function productOfAllNumbers(numbers: number[]): number {
+  return numbers.reduce((acc, num) => acc * num, 1);
+}
+
+// 14. Write a function that checks if
+//  a string is a valid email address.
+
+function isValidEmail2(email: string): boolean {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
+// 15. Write a function that accepts
+//  a string and returns it in reverse order.
+
+function reversedString(woed: string): string {
+  return woed.split('').reverse().join('');
+}
 
 // 16. Write a function that checks if a number is a perfect square.
 
-// 17. Create a function `getEvenNumbers` that accepts an array of numbers and returns only the even numbers.
+function checkIfANumber(num: number): boolean {
+  return Math.sqrt(num) % 1 === 0;
+}
+
+// 17. Create a function `getEvenNumbers` that accepts an
+//  array of numbers and returns only the even numbers.
+
+function getEvenNum(arr: number[]): number[] {
+  return arr.filter(a => a % 2 === 0);
+}
 
 // 18. Write a function that checks if a given year is a leap year.
 
+
+
 // 19. Create a function that accepts a number and returns its factorial.
 
-// 20. Write a function that accepts two strings and returns whether they are anagrams.
+// 20. Write a function that accepts two strings and returns
+//  whether they are anagrams.
+
+function anagramsCheck(string1: string, string2: string): boolean {
+  return string1.split('').reverse().join('') === string2;
+}
 
 // 21. Create a function that removes all vowels from a given string.
 
+function removeVowels2(word: string): string {
+  const vowels = ['a', 'e', 'o', 'u', 'i'];
+
+  for(let vol of vowels){
+    word = word.replaceAll(vol, '');
+  }
+
+  return word
+}
+
 // 22. Write a function that removes all falsy values from an array.
 
-// 23. Write a function that accepts an array of strings and returns the number of strings that start with a vowel.
+function removeFalsyValues2(arr: string[]): string[] {
+  return arr.filter(Boolean);
+}
+
+// 23. Write a function that accepts an array
+//  of strings and returns the number of strings that start with a vowel.
+
+
+function returnOnlyVovelsStrings(arr: string[]): number {
+  const vowels = ['a', 'e', 'o', 'u', 'i'];
+  return arr.filter(a => /^aoueiAOUEI/.test(a)).length();
+}
 
 // 24. Write a function that returns the average of an array of numbers.
 
-// 25. Create a function `getMax` that returns the largest number in an array of numbers.
+function returnAverageOfArr(arr: number[]): number {
+  return arr.reduce((acc, num) => acc + num) / arr.length;
+}
 
-// 26. Define a function that checks if a given object is empty (has no properties).
+// 25. Create a function `getMax` that returns the
+//  largest number in an array of numbers.
 
-// 27. Write a function that accepts an array of strings and returns the string with the most characters.
+function getMax2(arr: number[]): number {
+  return Math.max(...arr);
+}
 
-// 28. Create an enum `DayOfWeek` with all days of the week. Write a function that returns a message based on the day.
+// 26. Define a function that checks if a given object is
+//  empty (has no properties).
 
-// 29. Write a function that accepts a string and returns the string with no spaces.
+function emptyObjectCheck(obj: object): boolean {
+  return Object.keys(obj).length === 0;
+}
 
-// 30. Create a function that accepts an array of objects and returns the object with the highest value for a given property.
+// 27. Write a function that accepts an array
+//  of strings and returns the string with the most characters.
+
+function getLongestString2(arr: string[]): string {
+  return arr.reduce((longest, current) => current.length > longest.length ? current: longest, '');
+}
+
+// 28. Create an enum `DayOfWeek` with all days of the week.
+//  Write a function that returns a message based on the day.
+
+enum DayOfWeek2 {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
+
+function (day: DayOfWeek2): string {
+  switch(day){
+    case DayOfWeek2.Monday: return 'Shit is fucked up!';
+    case DayOfWeek2.Tuesday: return 'Shit is still fucked up';
+    case DayOfWeek2.Wednesday: return 'Middle of the week';
+    case DayOfWeek2.Thursday: return '4th day';
+    case DayOfWeek2.Friday: return 'Best day';
+    case DayOfWeek2.Saturday: return 'Relax and Dunday comming';
+    case DayOfWeek2.Sunday: return "Tomorrow is Monday....";
+  }
+}
+
+
+// 29. Write a function that accepts a string and
+//  returns the string with no spaces.
+
+function spacesRemove(str: string): string {
+  return str.replace(/\s+/g, '');
+}
+
+// 30. Create a function that accepts an array of objects
+//  and returns the object with the highest value for a given property.
+
+
 
 // 31. Write a function that accepts two strings and returns the longest common subsequence.
 
@@ -279,182 +395,6 @@ function findTheSumOfDigits(num: number): number {
 
 // 100. Write a function that accepts a number and returns the number of even divisors of that number.
 
-
-// 1. Write a function that finds the second largest number in an array of numbers.
-function secondLargest(numbers: number[]): number {
-  const sorted = [...numbers].sort((a, b) => b - a);
-  return sorted[1];
-}
-
-// 2. Create an interface `Student` with properties `name`, `age`, and `grades` (array of numbers). Write a function that calculates the average grade of a student.
-interface Student {
-  name: string;
-  age: number;
-  grades: number[];
-}
-
-function calculateAverage(student: Student): number {
-  const sum = student.grades.reduce((acc, grade) => acc + grade, 0);
-  return sum / student.grades.length;
-}
-
-// 3. Write a function that accepts an array of numbers and returns the sum of the even numbers.
-function sumEvenNumbers(numbers: number[]): number {
-  return numbers.filter(num => num % 2 === 0).reduce((acc, num) => acc + num, 0);
-}
-
-// 4. Create an enum `Role` with `Admin`, `Editor`, and `Viewer`. Write a function that checks if a user has admin privileges.
-enum Role {
-  Admin,
-  Editor,
-  Viewer,
-}
-
-function hasAdminPrivileges(role: Role): boolean {
-  return role === Role.Admin;
-}
-
-// 5. Write a function that accepts an array of strings and returns the longest string.
-function getLongestString(strings: string[]): string {
-  return strings.reduce((longest, current) => current.length > longest.length ? current : longest, "");
-}
-
-// 6. Define an interface `Rectangle` with properties `width` and `height`. Write a function that checks if the rectangle is a square.
-interface Rectangle {
-  width: number;
-  height: number;
-}
-
-function isSquare(rect: Rectangle): boolean {
-  return rect.width === rect.height;
-}
-
-// 7. Write a function that filters out strings that have more than 5 characters from an array.
-function filterShortStrings(strings: string[]): string[] {
-  return strings.filter(str => str.length <= 5);
-}
-
-// 8. Write a function that returns the index of the first occurrence of a given value in an array.
-function findIndex<T>(arr: T[], value: T): number {
-  return arr.indexOf(value);
-}
-
-// 9. Create a function that accepts an array of numbers and returns a new array with each number squared.
-function squareNumbers(numbers: number[]): number[] {
-  return numbers.map(num => num ** 2);
-}
-
-// 10. Define a type alias `Color` as a string literal type `"red" | "green" | "blue"`. Write a function that accepts a color and returns a message.
-type Color = "red" | "green" | "blue";
-
-function colorMessage(color: Color): string {
-  return `You chose the color: ${color}`;
-}
-
-// 11. Write a function that finds the sum of the digits in a number.
-function sumDigits(num: number): number {
-  return num.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);
-}
-
-// 12. Create an interface `Person` with `firstName`, `lastName`, and `age`. Write a function that sorts a list of people by age.
-interface Person {
-  firstName: string;
-  lastName: string;
-  age: number;
-}
-
-function sortPeopleByAge(people: Person[]): Person[] {
-  return people.sort((a, b) => a.age - b.age);
-}
-
-// 13. Write a function that accepts an array of numbers and returns the product of all the numbers.
-function productOfNumbers(numbers: number[]): number {
-  return numbers.reduce((acc, num) => acc * num, 1);
-}
-
-// 14. Write a function that checks if a string is a valid email address.
-function isValidEmail(email: string): boolean {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
-}
-
-// 15. Write a function that accepts a string and returns it in reverse order.
-function reverseString(str: string): string {
-  return str.split('').reverse().join('');
-}
-
-// 16. Write a function that checks if a number is a perfect square.
-function isPerfectSquare(num: number): boolean {
-  return Math.sqrt(num) % 1 === 0;
-}
-
-// 17. Create a function `getEvenNumbers` that accepts an array of numbers and returns only the even numbers.
-function getEvenNumbers(numbers: number[]): number[] {
-  return numbers.filter(num => num % 2 === 0);
-}
-
-// 18. Write a function that checks if a given year is a leap year.
-function isLeapYear(year: number): boolean {
-  return (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0));
-}
-
-// 19. Create a function that accepts a number and returns its factorial.
-function factorial(n: number): number {
-  return n <= 1 ? 1 : n * factorial(n - 1);
-}
-
-// 20. Write a function that accepts two strings and returns whether they are anagrams.
-function areAnagrams(str1: string, str2: string): boolean {
-  return str1.split('').sort().join('') === str2.split('').sort().join('');
-}
-
-// 21. Create a function that removes all vowels from a given string.
-function removeVowels(str: string): string {
-  return str.replace(/[aeiouAEIOU]/g, '');
-}
-
-// 22. Write a function that removes all falsy values from an array.
-function removeFalsyValues(arr: any[]): any[] {
-  return arr.filter(Boolean);
-}
-
-// 23. Write a function that accepts an array of strings and returns the number of strings that start with a vowel.
-function countVowelStrings(strings: string[]): number {
-  return strings.filter(str => /^[aeiouAEIOU]/.test(str)).length;
-}
-
-// 24. Write a function that returns the average of an array of numbers.
-function average(numbers: number[]): number {
-  return numbers.reduce((sum, num) => sum + num, 0) / numbers.length;
-}
-
-// 25. Create a function `getMax` that returns the largest number in an array of numbers.
-function getMax(numbers: number[]): number {
-  return Math.max(...numbers);
-}
-
-// 26. Define a function that checks if a given object is empty (has no properties).
-function isEmpty(obj: object): boolean {
-  return Object.keys(obj).length === 0;
-}
-
-// 27. Write a function that accepts an array of strings and returns the string with the most characters.
-function getLongestString(strings: string[]): string {
-  return strings.reduce((longest, current) => current.length > longest.length ? current : longest, "");
-}
-
-// 28. Create an enum `DayOfWeek` with all days of the week. Write a function that returns a message based on the day.
-enum DayOfWeek {
-  Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
-}
-
-function dayMessage(day: DayOfWeek): string {
-  switch(day) {
-    case DayOfWeek.Sunday: return "It's Sunday, time to relax!";
-    case DayOfWeek.Monday: return "It's Monday, back to work!";
-    default: return "It's a weekday!";
-  }
-}
 
 // 29. Write a function that accepts a string and returns it with no spaces.
 function removeSpaces(str: string): string {
