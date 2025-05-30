@@ -226,82 +226,124 @@ function formatUser(user: User): string {
 
 // 20.
 // Create a function that takes an object and returns its keys as a string array.
-function getObjectKeys(obj: object): string[] {
-  // Your code here
+
+function objectKeysToArray(obj: object): string[] {
+  return Object.keys(obj);
 }
+
 
 // 21.
 // Write a function that converts a string to camelCase.
+
+
 function toCamelCase(str: string): string {
-  // Your code here
+  return str
+    .toLowerCase()
+    .split(/[\s-_]+/)
+    .map((word, i) =>
+      i === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join('');
 }
+
 
 // 22.
 // Define an interface Task with id, description, and completed boolean.
 // Write a function that toggles the completed state.
+
+
 interface Task {
-  // Your code here
+  id: string;
+  descrption: string;
+  completed: boolean;
 }
-function toggleTask(task: Task): Task {
-  // Your code here
+
+function completeTask(task: Task): Task {
+  return {...task, completed: !task.completed}
 }
 
 // 23.
 // Create a function that counts how many times a character appears in a string.
-function countChar(str: string, char: string): number {
-  // Your code here
+
+function countCharacterInString(string: string, char: string): number {
+  return string.split('').filter(c => c === char).length
 }
+
 
 // 24.
 // Write a function that takes a number and returns its factorial.
-function factorial(n: number): number {
-  // Your code here
+
+function factorial(number: number): number {
+  if (number <= 1) return 1;
+  return number * factorial(number - 1);
 }
 
 // 25.
 // Create a type alias ID as string or number.
 // Write a function that normalizes IDs to strings.
+
 type ID = string | number;
-function normalizeId(id: ID): string {
-  // Your code here
+
+function normalizeID(id: ID): string {
+  return id.toString();
 }
 
 // 26.
 // Define an interface Event with title, date (string), and attendees (number).
 // Write a function that filters upcoming events (date in the future).
+
 interface Event {
-  // Your code here
+  title: string;
+  data: string;
+  attendance: number;
 }
-function upcomingEvents(events: Event[]): Event[] {
-  // Your code here
+
+function filterEvents(events: Event[]): Event[] {
+  const now = new Date();
+  return events.filter(e => new Date(e.data) > now);
 }
+
 
 // 27.
 // Write a function that takes an array of strings and returns
 // only those starting with a vowel.
-function filterVowels(words: string[]): string[] {
-  // Your code here
+
+function returnOnlyVovels(arr: string[]): string[] {
+  const vowels = ['a', 'o', 'u', 'e', 'i', ];
+  return arr.filter(s => vowels.includes(s[0].toLocaleLowerCase())
 }
 
 // 28.
 // Define an enum LogLevel with Error, Warn, Info, Debug.
 // Write a function that logs a message only if level is above a threshold.
 enum LogLevel {
-  // Your code here
+  Error,
+  Warn,
+  Info,
+  Debug
 }
+
 function logMessage(level: LogLevel, threshold: LogLevel, message: string): void {
-  // Your code here
+  if (level <= threshold){
+    console.log(`${LogLevel[level]} ${message}`)
+  }
 }
 
 // 29.
 // Create a function that generates an array of numbers from start to end inclusive.
-function range(start: number, end: number): number[] {
-  // Your code here
+
+function generateArrOfNumbers(start: number, end: number): number[] {
+  const result: number[] = [];
+  for (let i = start; i <= end; i++) {
+    result.push(i);
+  }
 }
 
 // 30.
 // Write a function that takes a nested array (array of arrays) of numbers
 // and flattens it into a single array.
-function flatten(arr: number[][]): number[] {
-  // Your code here
+
+function flattenArray(arr: number[][]): number[] {
+  return arr.reduce((acc, curr) => acc.concat(curr), []);
 }
+
