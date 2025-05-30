@@ -97,6 +97,10 @@ function acceptColor(color: Color2): string {
 
 // 11. Write a function that finds the sum of the digits in a number.
 
+function findTheSumOfDigits(num: number): number {
+  return num.toString().split('').reduce((acc, digit) => acc + parseInt(digit), 0);
+}
+
 // 12. Create an interface `Person` with `firstName`, `lastName`, and `age`. Write a function that sorts a list of people by age.
 
 // 13. Write a function that accepts an array of numbers and returns the product of all the numbers.
