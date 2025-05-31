@@ -253,7 +253,9 @@ function spacesRemove(str: string): string {
 // 30. Create a function that accepts an array of objects
 //  and returns the object with the highest value for a given property.
 
-
+function highestValueObject(arr: object[]): object {
+  
+}
 
 // 31. Write a function that accepts two strings and returns the longest common subsequence.
 
