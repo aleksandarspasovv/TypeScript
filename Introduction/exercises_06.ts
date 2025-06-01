@@ -257,19 +257,49 @@ function highestValueObject(arr: object[]): object {
   
 }
 
-// 31. Write a function that accepts two strings and returns the longest common subsequence.
+// 31. Write a function that accepts two strings
+//  and returns the longest common subsequence.
 
 // 32. Create a function `isPalindrome` that checks if a given string is a palindrome, ignoring spaces and case.
 
 // 33. Write a function that finds the difference between two arrays (elements in one but not the other).
 
-// 34. Write a function that accepts an array of numbers and returns an array of those numbers multiplied by 10.
+function differenceArray(arr1: number[], arr2: number[]): number[] {
+  return arr1.filter(item => !arr2.includes(item));
+}
 
-// 35. Write a function that accepts a string and returns the number of vowels in the string.
 
-// 36. Create a function that accepts two arrays of strings and returns an array with all unique strings from both arrays.
+// 34. Write a function that accepts an array of numbers
+//  and returns an array of those numbers multiplied by 10.
 
-// 37. Write a function that returns the sum of an array of objects' properties.
+function multiplyByTen2(arr: number[]): number[] {
+  return arr.map(num => num * 10);
+}
+
+// 35. Write a function that accepts a string and
+//  returns the number of vowels in the string.
+
+function countVowels2(word: string): number {
+  return (word.match(/[aeiouAEIOU]/g) || []).length;
+}
+
+// 36. Create a function that accepts two arrays of
+//  strings and returns an array with all unique strings from both arrays.
+
+function mergeUniqueStrings2(arr1: string[], arr2: string[]): string[] {
+  return [...new Set([...arr1, ...arr2])];
+}
+
+// 37. Write a function that returns the sum of an array
+//  of objects' properties.
+
+interface Item2 {
+  price: number
+}
+
+function sumOfArr(obj: Item2[]): number {
+  return obj.reduce((sum, item) => sum + item.price, 0);
+}
 
 // 38. Create a function `removeFalsyValues` that removes falsy values (`null`, `undefined`, `false`, etc.) from an array.
 
@@ -398,54 +428,33 @@ function highestValueObject(arr: object[]): object {
 // 100. Write a function that accepts a number and returns the number of even divisors of that number.
 
 
-// 29. Write a function that accepts a string and returns it with no spaces.
-function removeSpaces(str: string): string {
-  return str.replace(/\s+/g, '');
-}
+//-----------------------------------
 
-// 30. Create a function that accepts an array of objects and returns the object with the highest value for a given property.
-function findObjectWithMaxValue<T>(arr: T[], property: keyof T): T | undefined {
-  return arr.reduce((max, current) => (current[property] > max[property] ? current : max), arr[0]);
-}
+// // 30. Create a function that accepts an array of objects and returns the object with the highest value for a given property.
+// function findObjectWithMaxValue<T>(arr: T[], property: keyof T): T | undefined {
+//   return arr.reduce((max, current) => (current[property] > max[property] ? current : max), arr[0]);
+// }
 
-// 31. Write a function that accepts two strings and returns the longest common subsequence.
-function longestCommonSubsequence(str1: string, str2: string): string {
-  const matrix: string[][] = [];
-  for (let i = 0; i <= str1.length; i++) {
-    matrix[i] = [];
-    for (let j = 0; j <= str2.length; j++) {
-      if (i === 0 || j === 0) {
-        matrix[i][j] = '';
-      } else if (str1[i - 1] === str2[j - 1]) {
-        matrix[i][j] = matrix[i - 1][j - 1] + str1[i - 1];
-      } else {
-        matrix[i][j] = matrix[i - 1][j].length > matrix[i][j - 1].length ? matrix[i - 1][j] : matrix[i][j - 1];
-      }
-    }
-  }
-  return matrix[str1.length][str2.length];
-}
+//-----------------------------------
 
-// 32. Create a function `isPalindrome` that checks if a given string is a palindrome, ignoring spaces and case.
-function isPalindrome(str: string): boolean {
-  const cleaned = str.replace(/\s+/g, '').toLowerCase();
-  return cleaned === cleaned.split('').reverse().join('');
-}
+// // 31. Write a function that accepts two strings and returns the longest common subsequence.
+// function longestCommonSubsequence(str1: string, str2: string): string {
+//   const matrix: string[][] = [];
+//   for (let i = 0; i <= str1.length; i++) {
+//     matrix[i] = [];
+//     for (let j = 0; j <= str2.length; j++) {
+//       if (i === 0 || j === 0) {
+//         matrix[i][j] = '';
+//       } else if (str1[i - 1] === str2[j - 1]) {
+//         matrix[i][j] = matrix[i - 1][j - 1] + str1[i - 1];
+//       } else {
+//         matrix[i][j] = matrix[i - 1][j].length > matrix[i][j - 1].length ? matrix[i - 1][j] : matrix[i][j - 1];
+//       }
+//     }
+//   }
+//   return matrix[str1.length][str2.length];
+// }
 
-// 33. Write a function that finds the difference between two arrays (elements in one but not the other).
-function arrayDifference(arr1: number[], arr2: number[]): number[] {
-  return arr1.filter(item => !arr2.includes(item));
-}
-
-// 34. Write a function that accepts an array of numbers and returns an array of those numbers multiplied by 10.
-function multiplyByTen(numbers: number[]): number[] {
-  return numbers.map(num => num * 10);
-}
-
-// 35. Write a function that accepts a string and returns the number of vowels in the string.
-function countVowels(str: string): number {
-  return (str.match(/[aeiouAEIOU]/g) || []).length;
-}
 
 // 36. Create a function that accepts two arrays of strings and returns an array with all unique strings from both arrays.
 function mergeUniqueStrings(arr1: string[], arr2: string[]): string[] {
