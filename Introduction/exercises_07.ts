@@ -213,7 +213,6 @@ function addMatrices(matrix1: Matrix, matrix2: Matrix): Matrix {
       result[i][j] = matrix1[i][j] + matrix2[i][j];
     }
   }
-  
   return result;
 }
 
