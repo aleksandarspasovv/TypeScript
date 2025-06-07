@@ -301,23 +301,73 @@ function sumOfArr(obj: Item2[]): number {
   return obj.reduce((sum, item) => sum + item.price, 0);
 }
 
-// 38. Create a function `removeFalsyValues` that removes falsy values (`null`, `undefined`, `false`, etc.) from an array.
+// 38. Create a function `removeFalsyValues` that removes falsy
+//  values (`null`, `undefined`, `false`, etc.) from an array.
+
+function removeFalsyValues3(arr: any[]): any[] {
+  return arr.filter(Boolean);
+}
 
 // 39. Write a function that reverses an array of numbers.
 
-// 40. Write a function `findDuplicates` that returns all duplicated elements from an array.
+function reverseArray2(arr: number[]): number[] {
+  return arr.reverse();
+}
 
-// 41. Create a function that returns the union of two arrays (all unique elements from both arrays).
+// 40. Write a function `findDuplicates` that returns
+//  all duplicated elements from an array.
 
-// 42. Write a function that accepts an array of strings and returns only those strings that are in lowercase.
+function findDuplicates2(arr: number[]): number[] {
+  const seen2 = new Set();
+  const duplicates2 = new Set();
 
-// 43. Create a function that accepts an array of objects and returns an object with the most frequent value of a specific property.
+  for (const num of arr) {
+    if (seen2.has(num)) {
+      duplicates2.add(num)
+    } else {
+      seen2.add(num)
+    }
+  }
+
+  return [...duplicates2]
+
+}
+
+// 41. Create a function that returns the union of two
+//  arrays (all unique elements from both arrays).
+
+function uniqueElementsFromTwoArrays2(arr1: any[], arr2: any[]): any[] {
+  return [new Set([...arr1, ...arr2])];
+}
+
+// 42. Write a function that accepts an array
+//  of strings and returns only those strings that are in lowercase.
+
+function returnOnlyVovelsStrings2(arr: string[]): string[] {
+  return arr.filter(word => word === word.toLocaleLowerCase());
+}
+
+// 43. Create a function that accepts an array
+//  of objects and returns an object with the most frequent value of a specific property.
+
+// function findObjectWithMaxValue2(arr: object[]): object 
+  
+
 
 // 44. Write a function that finds the greatest common divisor (GCD) of two numbers.
 
-// 45. Create a function that accepts an array and returns an array of all the numbers that are divisible by 3.
+
+
+// 45. Create a function that accepts an array and returns
+//  an array of all the numbers that are divisible by 3.
+
+function divisibleByThree2(arr: number[]): number[] {
+  return arr.filter(num => num % 3 === 0);
+}
 
 // 46. Write a function that returns a random element from an array.
+
+
 
 // 47. Define a function that accepts an array of numbers and returns a new array with all the odd numbers removed.
 
@@ -504,19 +554,19 @@ function filterLowerCase(strings: string[]): string[] {
   return strings.filter(str => str === str.toLowerCase());
 }
 
-// 43. Create a function that accepts an array of objects and returns an object with the most frequent value of a specific property.
-function mostFrequentProperty<T>(arr: T[], prop: keyof T): T | undefined {
-  const frequencyMap: Record<string, number> = {};
-  arr.forEach(item => {
-    const key = item[prop] as unknown as string;
-    frequencyMap[key] = (frequencyMap[key] || 0) + 1;
-  });
-  const mostFrequentValue = Object.entries(frequencyMap).reduce(
-    (max, current) => (current[1] > max[1] ? current : max),
-    ["", 0]
-  );
-  return arr.find(item => item[prop] === mostFrequentValue[0]);
-}
+// // 43. Create a function that accepts an array of objects and returns an object with the most frequent value of a specific property.
+// function mostFrequentProperty<T>(arr: T[], prop: keyof T): T | undefined {
+//   const frequencyMap: Record<string, number> = {};
+//   arr.forEach(item => {
+//     const key = item[prop] as unknown as string;
+//     frequencyMap[key] = (frequencyMap[key] || 0) + 1;
+//   });
+//   const mostFrequentValue = Object.entries(frequencyMap).reduce(
+//     (max, current) => (current[1] > max[1] ? current : max),
+//     ["", 0]
+//   );
+//   return arr.find(item => item[prop] === mostFrequentValue[0]);
+// }
 
 // 44. Write a function that finds the greatest common divisor (GCD) of two numbers.
 function greatestCommonDivisor(a: number, b: number): number {
