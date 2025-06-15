@@ -367,6 +367,10 @@ function divisibleByThree2(arr: number[]): number[] {
 
 // 46. Write a function that returns a random element from an array.
 
+function randomElementOfArray<T>(arr: T[]): T {
+  const randomIndex2 = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex2]
+}
 
 
 // 47. Define a function that accepts an array of numbers and returns a new array with all the odd numbers removed.
