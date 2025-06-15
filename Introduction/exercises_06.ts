@@ -373,7 +373,12 @@ function randomElementOfArray<T>(arr: T[]): T {
 }
 
 
-// 47. Define a function that accepts an array of numbers and returns a new array with all the odd numbers removed.
+// 47. Define a function that accepts an array
+//  of numbers and returns a new array with all the odd numbers removed.
+
+function oddNumbersRemove(arr: number[]): number[] {
+  return arr.filter(a => a % 2 === 0);
+}
 
 // 48. Write a function that finds the sum of all prime numbers up to a given number.
 
