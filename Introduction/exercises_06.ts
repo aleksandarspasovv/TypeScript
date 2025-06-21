@@ -380,15 +380,34 @@ function oddNumbersRemove(arr: number[]): number[] {
   return arr.filter(a => a % 2 === 0);
 }
 
-// 48. Write a function that finds the sum of all prime numbers up to a given number.
+// 48. Write a function that finds the sum
+//  of all prime numbers up to a given number.
 
-// 49. Create a function that accepts a string and returns the first non-repeating character.
+// 49. Create a function that accepts a
+//  string and returns the first non-repeating character.
 
-// 50. Write a function that checks if an array of numbers is sorted in ascending order.
 
-// 51. Write a function that removes the first element from an array and returns the new array.
 
-// 52. Create a function `getFirstNElements` that returns the first `n` elements of an array.
+// 50. Write a function that checks if an array
+//  of numbers is sorted in ascending order.
+
+function checkArray(arr: number[]): boolean {
+  return arr.every((num, i) => i === 0 || num >= num[i - 1])
+}
+
+// 51. Write a function that removes the first element
+//  from an array and returns the new array.
+
+function removeFirstElement2<T>(arr: T[]): T[] {
+  return arr.slice(1);
+}
+
+// 52. Create a function `getFirstNElements
+// ` that returns the first `n` elements of an array.
+
+function getFirstNElements2<T>(arr: T[], n: number): T[] {
+  return arr.slice(0, n);
+}
 
 // 53. Write a function `deepClone` that creates a deep clone of an object (without references).
 
