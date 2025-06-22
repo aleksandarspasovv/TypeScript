@@ -471,6 +471,10 @@ function getFirstNElements2<T>(arr: T[], n: number): T[] {
 // 71. Write a function that returns the last 
 // element of an array without removing it.
 
+function returnLastElement<T>(arr: T[]): T {
+  return arr[arr.length - 1];
+}
+
 // 72. Create a function that returns all the
 //  prime numbers less than a given number.
 
@@ -479,6 +483,10 @@ function getFirstNElements2<T>(arr: T[], n: number): T[] {
 
 // 74. Write a function that removes all numbers 
 // greater than a certain value from an array.
+
+function removeEl(arr: number[], value: number): number[] {
+  return arr.filter(num => num <= value);
+}
 
 // 75. Create a function that returns the nth
 //  Fibonacci number.
