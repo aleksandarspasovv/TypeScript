@@ -411,55 +411,86 @@ function getFirstNElements2<T>(arr: T[], n: number): T[] {
 
 // 53. Write a function `deepClone` that creates a deep clone of an object (without references).
 
-// 54. Write a function that accepts a string and returns the number of words that are at least 5 characters long.
+// 54. Write a function that accepts
+//  a string and returns the number of words that are at least 5 characters long.
 
-// 55. Write a function that finds the intersection of two arrays (common elements).
+// 55. Write a function that finds
+//  the intersection of two arrays (common elements).
 
-// 56. Create a function that accepts a string and returns a boolean indicating if it's a valid URL.
+// 56. Create a function that accepts
+//  a string and returns a boolean indicating
+//  if it's a valid URL.
 
-// 57. Write a function `mergeArraysNoDuplicates` that merges two arrays and removes any duplicate values.
+// 57. Write a function `mergeArraysNoDuplicates`
+//  that merges two arrays and removes any duplicate values.
 
-// 58. Write a function that accepts a number and returns the sum of all its divisors (excluding the number itself).
+// 58. Write a function that accepts
+//  a number and returns the sum of all
+//  its divisors (excluding the number itself).
 
-// 59. Create a function that takes an object and converts it into an array of key-value pairs.
+// 59. Create a function that takes an object
+//  and converts it into an array of key-value pairs.
 
-// 60. Write a function that accepts a string and returns the first word in the string.
+// 60. Write a function that accepts a string
+//  and returns the first word in the string.
 
-// 61. Write a function that counts the number of times a character appears in a string (case insensitive).
+// 61. Write a function that counts the number
+//  of times a character appears in a string 
+// (case insensitive).
 
-// 62. Write a function that accepts an array and returns the difference between the largest and smallest numbers.
+// 62. Write a function that accepts an array
+//  and returns the difference between the largest
+//  and smallest numbers.
 
-// 63. Create a function that checks if a number is divisible by 2, 3, or both.
+// 63. Create a function that checks if a number
+//  is divisible by 2, 3, or both.
 
-// 64. Write a function that accepts a string and removes all digits from it.
+// 64. Write a function that accepts a string
+//  and removes all digits from it.
 
-// 65. Write a function that checks if an array contains duplicates.
+// 65. Write a function that checks if an array
+//  contains duplicates.
 
-// 66. Create a function that takes a string and replaces all spaces with underscores.
+// 66. Create a function that takes a string and
+//  replaces all spaces with underscores.
 
-// 67. Write a function `sortByProperty` that accepts an array of objects and sorts them by a specified property.
+// 67. Write a function `sortByProperty` that
+//  accepts an array of objects and sorts them by
+//  a specified property.
 
-// 68. Write a function that returns all unique characters from a given string.
+// 68. Write a function that returns all unique
+//  characters from a given string.
 
-// 69. Write a function that accepts two arrays and returns an array of elements that are present in both arrays (intersection).
+// 69. Write a function that accepts two arrays
+//  and returns an array of elements that are present
+//  in both arrays (intersection).
 
-// 70. Write a function that checks if a number is within a given range (inclusive).
+// 70. Write a function that checks if a number
+//  is within a given range (inclusive).
 
-// 71. Write a function that returns the last element of an array without removing it.
+// 71. Write a function that returns the last 
+// element of an array without removing it.
 
-// 72. Create a function that returns all the prime numbers less than a given number.
+// 72. Create a function that returns all the
+//  prime numbers less than a given number.
 
-// 73. Write a function that accepts a string and returns it with all consonants removed.
+// 73. Write a function that accepts a string
+//  and returns it with all consonants removed.
 
-// 74. Write a function that removes all numbers greater than a certain value from an array.
+// 74. Write a function that removes all numbers 
+// greater than a certain value from an array.
 
-// 75. Create a function that returns the nth Fibonacci number.
+// 75. Create a function that returns the nth
+//  Fibonacci number.
 
-// 76. Write a function that converts a string into an array of words.
+// 76. Write a function that converts a string 
+// into an array of words.
 
-// 77. Create a function that accepts an array of strings and returns a new array with each string reversed.
+// 77. Create a function that accepts an array 
+// of strings and returns a new array with each string reversed.
 
-// 78. Write a function that accepts an array of numbers and returns the sum of the odd numbers.
+// 78. Write a function that accepts an array
+//  of numbers and returns the sum of the odd numbers.
 
 // 79. Write a function that checks if two strings are identical (case-sensitive).
 
