@@ -133,3 +133,44 @@ margheritaPizza.displayPizza();  // Pizza with thin crust, mozzarella cheese, an
 // Create a Pepperoni pizza
 const pepperoniPizza = pizzaDirector.makePepperoniPizza();
 pepperoniPizza.displayPizza();  // Pizza with thick crust, cheddar cheese, and toppings: pepperoni, mushrooms
+
+
+
+// 3. Factory Pattern
+
+interface Notification {
+    send(message: string): void;
+}
+
+class EmailNotification implements Notification {
+    send(message: string): void {
+        console.log(`Sending email with message ${message}`);
+    }
+}
+
+class SMSNotification implements Notification {
+    send(message: string): void {
+        console.log(`Sending SMS with this message ${message}`);
+    }
+}
+
+class NotificationFactory {
+    static createNotification(type: string): Notification {
+        switch (type.toLowerCase()) {
+            case 'email':
+                return new EmailNotification();
+
+            case 'sms':
+                return new SMSNotification();
+
+            default:
+                throw new Error(`Unknown notification type`);
+        }
+    }
+}
+
+const notification1 = NotificationFactory.createNotification('email');
+notification1.send('Welcome to the platform');
+
+const notification2 = NotificationFactory.createNotification('sms');
+notification2.send('Your code is *****');
