@@ -174,3 +174,89 @@ notification1.send('Welcome to the platform');
 
 const notification2 = NotificationFactory.createNotification('sms');
 notification2.send('Your code is *****');
+
+
+// 4. Facade Pattern
+
+class DVDPlayer {
+    on() {
+        console.log('DVD Player is on');
+    }
+
+    play(movie: string) {
+        console.log(`Playing movie: ${movie}`);
+    }
+
+    off() {
+        console.log(`Turning DVD Player Off`);
+    }
+
+}
+
+
+class Projector {
+    on() {
+        console.log('Projector Player is on');
+    }
+
+    off() {
+        console.log(`Turning Projector Off`);
+    }
+}
+
+
+class SurroundSound {
+    on() {
+        console.log(`Surround sounf is ON`);
+    }
+
+    setVolume(level: number) {
+        console.log(`Setting volume to level ${level}`;)
+    }
+
+    off() {
+        console.log(`Surround sound is off`);
+    }
+}
+
+
+
+class HomeTheaterFacade { //Facade Class
+    private dvd: DVDPlayer;
+    private projector: Projector;
+    private sound: SurroundSound;
+
+    constructor(dvd: DVDPlayer, projector: Projector, sound: SurroundSound) {
+        this.dvd = dvd;
+        this.projector = projector;
+        this.sound = sound;
+    }
+
+    watchMovie(movie: string) {
+        console.log(`Get ready tow atch a movie`);
+        this.projector.on();
+        this.sound.on();
+        this.sound.setVolume(10);
+        this.dvd.on();
+        this.dvd.play(movie);
+    }
+
+    endMovie() {
+        console.log(`Shutting the theater down..`);
+        this.dvd.off();
+        this.sound.off();
+        this.projector.off();
+    }
+}
+
+// Client Code
+
+const dvdPlayer = new DVDPlayer();
+const projector = new Projector();
+const surroundSound = new SurroundSound();
+
+const homeTheater = new HomeTheaterFacade(dvdPlayer, projector, surroundSound);
+
+homeTheater.watchMovie('Inception');
+homeTheater.endMovie();
+
