@@ -158,7 +158,7 @@ class NotificationFactory {
     static createNotification(type: string): Notification {
         switch (type.toLowerCase()) {
             case 'email':
-                return new EmailNotification();
+                return  new EmailNotification();
 
             case 'sms':
                 return new SMSNotification();
@@ -357,3 +357,64 @@ paymnet.setStartegy(new CryptoPaymnet());
 paymnet.checkout(50) // Paid Using Crypto Wallet
 
 
+// 7. Observer Pattern
+
+//The Observer Pattern defines a one-to-many dependency between objects so that when
+//one object (the Subject) changes state, all its Observers are notified and updated
+//automatically.
+
+interface Subscriber {                          //Observer Interface
+    update(news: string): void;
+}
+
+class EmailSubscriber implements Subscriber { // Concrete Observers
+    update(news: string): void {
+        console.log(`Email Subscriber recieved: ${news}`);
+    }
+}
+
+
+class SMSSubscriber implements Subscriber {
+    update(news: string): void {
+        console.log(`SMS Subscriber recieved ${news}`);
+    }
+}
+
+interface NewsAgency {                          // Subject Interface
+    subscriber(subscriber: Subscriber): void;
+    unsubscribe(subscriber: Subscriber): void;
+    notify(news: string): void;
+}
+
+class ConcreteNewsAgency implements NewsAgency { //Concrete Subject
+
+    private subscibers: Subscriber[] = [];
+
+    subscriber(subscriber: Subscriber): void {
+        this.subscibers.push(subscriber);
+    }
+
+    unsubscribe(subscriber: Subscriber): void {
+        this.subscibers = this.subscibers.filter(sub => sub !== subscriber);
+    }
+
+    notify(news: string): void {
+        for (const sub of this.subscibers) {
+            sub.update(news);
+        }
+    }
+}
+
+const newsAgency = new ConcreteNewsAgency();
+
+const emailSub = new EmailSubscriber();
+const smsSub = new SMSSubscriber();
+
+newsAgency.subscriber(emailSub);
+newsAgency.subscriber(smsSub);
+
+newsAgency.notify(`Breaking News: Startegy Patter`);
+
+newsAgency.unsubscribe(smsSub);
+
+newsAgency.notify('Update: Startegy Pattern now avaliable!');
