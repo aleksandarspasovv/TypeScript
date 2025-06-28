@@ -260,3 +260,100 @@ const homeTheater = new HomeTheaterFacade(dvdPlayer, projector, surroundSound);
 homeTheater.watchMovie('Inception');
 homeTheater.endMovie();
 
+
+// 4. Adapter Pattern
+
+interface PaymentProcessor { // Target Interface (What app expects)
+    pay(amount: number): void;
+}
+
+class ThirdPartyStripe { //Adaptee (Incompatible third-party API)
+    makePayment(amountInCents: number): void {
+        console.log(`Paymnet of $ ${amountInCents/ 100} made using Stripe`);
+    }
+}
+
+class StripeAdapter implements PaymentProcessor { //Adapter (Converts the interface)
+    private stripe: ThirdPartyStripe;
+
+    constructor(stripe: ThirdPartyStripe) {
+        this.stripe = stripe;
+    }
+
+    pay(amount: number): void {
+        const amountInCents = amount * 100;
+        this.stripe.makePayment(amountInCents);
+    }
+}
+
+// Client expects a PaymentProcessor interface
+
+function checkout(paymentProcessor: PaymentProcessor, amount: number) {
+    paymentProcessor.pay(amount);
+}
+
+// Using Stripe via Adapter
+
+const stripe = new ThirdPartyStripe();
+const adapterStripe = new StripeAdapter(stripe);
+
+checkout(adapterStripe, 49.99) // Client is unaware of the adapter
+
+
+
+// 6. Strategy Pattern
+// The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes
+// them interchangeable. It lets the algorithm vary independently from clients that use it.
+
+
+interface PaymnetStartegy { // Strategy Interface
+    pay(amount: number): void;
+}
+
+
+class CreditCardPaymnet implements PaymnetStartegy { //Concrete Strategies
+    pay(amount: number): void {
+        console.log(`Paid $${amount} using Credit Card`)
+    }
+}
+
+
+class PayPalPayment implements PaymnetStartegy {
+    pay(amount: number): void {
+        console.log(`Paid $${amount} using PayPal`);
+    }
+}
+
+
+class CryptoPaymnet implements PaymnetStartegy {
+    pay(amount: number): void {
+        console.log(`Paid $${amount} using Vrypto Wallet`);
+    }
+}
+
+class PaymentContext {                      // Context Class
+    private strategy: PaymnetStartegy;
+
+    constructor(startegy: PaymnetStartegy) {
+        this.strategy = startegy;
+    }
+
+    setStartegy(startegy: PaymnetStartegy){
+        this.strategy = startegy;
+    }
+
+    checkout(amount: number) {
+        this.strategy.pay(amount);
+    }
+}
+
+const paymnet = new PaymentContext(new CreditCardPaymnet());
+paymnet.checkout(100) // Paid Using Credit Card
+
+paymnet.setStartegy(new PayPalPayment());
+paymnet.checkout(75) // Paid Using Paypal
+
+paymnet.setStartegy(new CryptoPaymnet());
+paymnet.checkout(50) // Paid Using Crypto Wallet
+
+
