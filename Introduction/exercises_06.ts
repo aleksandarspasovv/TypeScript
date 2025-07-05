@@ -861,7 +861,8 @@ function longestWord(sentence: string): string {
   return sentence.split(' ').reduce((longest, current) => current.length > longest.length ? current : longest, '');
 }
 
-// 83. Write a function that removes the last element from an array and returns the new array.
+// 83. Write a function that removes the
+//  last element from an array and returns the new array.
 function removeLastElement<T>(arr: T[]): T[] {
   return arr.slice(0, arr.length - 1);
 }
@@ -871,7 +872,9 @@ function toTitleCase(str: string): string {
   return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
-// 85. Write a function that accepts a number and returns whether it's a perfect number (equal to the sum of its proper divisors).
+// 85. Write a function that accepts a
+//  number and returns whether it's a perfect
+//  number (equal to the sum of its proper divisors).
 function isPerfectNumber(num: number): boolean {
   let sum = 0;
   for (let i = 1; i < num; i++) {
