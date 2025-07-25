@@ -26,3 +26,17 @@ function createUserCorrect(user: User): string {
     return `User was created successfully`
 }
 
+type User2 = {
+    readonly _id: string;
+    name: string;
+    email: string;
+}
+
+let newUser2: User2 = {
+    _id: '123',
+    name: 'A',
+    email: 'a@a.com',
+}
+
+newUser2.email = 'b@b';
+newUser2._id = '3213213' //not allowed
