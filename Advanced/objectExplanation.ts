@@ -27,9 +27,10 @@ function createUserCorrect(user: User): string {
 }
 
 type User2 = {
-    readonly _id: string;
+    readonly _id: string;  //readonly
     name: string;
     email: string;
+    craditCardDetails?: number // optional
 }
 
 let newUser2: User2 = {
@@ -39,4 +40,11 @@ let newUser2: User2 = {
 }
 
 newUser2.email = 'b@b';
-newUser2._id = '3213213' //not allowed
+// newUser2._id = '3213213' //not allowed
+
+
+const userScores: Record<string, number> = {  //Use Record when:
+  alice: 100,                       // You want all keys to be the same type (e.g., strings or enums)
+                                    // All values are of the same type                               
+  bob: 95,
+};
