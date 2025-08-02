@@ -11,7 +11,7 @@ superHeroPower.push(2);
 
 
 
-type Hero {
+type Hero = {
     name: string;
     power: number;
 }
