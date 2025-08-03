@@ -1,8 +1,7 @@
 class AdminUser2 {
 
     private _courseCount = 1
-
-    readonly city: string = 'Sofia';
+    protected city: string = 'Sofia'    //protected can be seen in the inherited classes
 
     constructor(
         public name: string,
@@ -10,12 +9,12 @@ class AdminUser2 {
         private userID: number,
         ){}
 
-    get getAppleEmail(): string {    //getter (used to acces private parameters)
+    get getAppleEmail(): string {    //getter (used to acces properties)
         return `apple${this.email}`
     } 
 
     get courseCount(): number {
-        return this._courseCount  //basic getter for the course count
+        return this._courseCount  //basic getter for the course count (doesnt need to be private)
     }
 
     set courseCount(courseNumber: number) {
@@ -29,5 +28,13 @@ class AdminUser2 {
 
     private deleteToken(){
         console.log('token deleted');
+    }
+}
+
+class SubUser extends AdminUser2 {
+    isFamily: boolean = true;
+
+    changeCityName(){
+        this.city = 'Plovdiv'
     }
 }
