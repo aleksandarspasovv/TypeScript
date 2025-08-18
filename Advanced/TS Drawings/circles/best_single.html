@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Neon MAL Script</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rings: 25;
+    --scale-step: 0.01;
+    --stroke: 2.2;
+    --tilt: 65deg;
+    --rise: 28vmin;
+    --drift: 20%;
+    --speed: 4s;
+    --delay-step: 60ms;
+    --z-step: 1px;
+    --bg: #000;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .scene { perspective: 1200px; }
+  .stack { transform-style: preserve-3d; transform: rotateX(var(--tilt)); }
+  svg { width: 90vmin; height: auto; overflow: visible; }
+
+  text {
+    fill: none;
+    stroke-width: var(--stroke);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    font-family: 'Pacifico', cursive;
+    font-size: 220px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+  }
+
+  .ring {
+    animation: lift var(--speed) ease-in-out calc(var(--i) * var(--delay-step)) infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  @keyframes lift {
+    0%,100% {
+      transform: translateZ(var(--z)) translateY(0) translateX(0) scale(var(--s));
+    }
+    50% {
+      transform: translateZ(var(--z))
+                 translateY(calc(-1 * var(--rise) * var(--amp)))
+                 translateX(var(--drift))
+                 scale(var(--s));
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="scene">
+    <div class="stack">
+      <svg viewBox="0 0 1000 400" id="base">
+        <text id="malText" x="50%" y="50%">MAL</text>
+      </svg>
+    </div>
+  </div>
+
+<script>
+const css = getComputedStyle(document.documentElement);
+const RINGS      = parseInt(css.getPropertyValue('--rings')) || 25;
+const SCALE_STEP = parseFloat(css.getPropertyValue('--scale-step')) || 0.01;
+const Z_STEP     = parseFloat(css.getPropertyValue('--z-step')) || 1;
+
+const baseSVG  = document.getElementById('base');
+const baseText = document.getElementById('malText');
+
+// Ring 0 is the base
+setupRing(baseText, 0);
+
+// Clone rings
+for (let i = 1; i < RINGS; i++) {
+  const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  t.setAttribute('x', baseText.getAttribute('x'));
+  t.setAttribute('y', baseText.getAttribute('y'));
+  t.setAttribute('font-family', baseText.getAttribute('font-family'));
+  t.setAttribute('font-size', baseText.getAttribute('font-size'));
+  t.textContent = baseText.textContent;
+  baseSVG.appendChild(t);
+  setupRing(t, i);
+}
+
+function setupRing(el, i){
+  el.classList.add('ring');
+  el.style.setProperty('--i', i);
+  el.style.setProperty('--s', 1 + i * SCALE_STEP);
+
+  const t = i / (RINGS - 1);
+  const amp = 1 - Math.pow(t, 1.5) * 0.75;
+  el.style.setProperty('--amp', amp);
+  el.style.setProperty('--z', `${i * Z_STEP}px`);
+
+  const hue = (i * 360 / RINGS) % 360;
+  const color = `hsl(${hue}, 100%, 55%)`;
+  el.style.stroke = color;
+  el.style.filter = `drop-shadow(0 0 3px ${color})`;
+}
+</script>
+</body>
+</html>
