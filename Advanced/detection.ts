@@ -21,7 +21,7 @@ type Fish = {
 
 type Bird = {fly: () => void}
 
-function isFish(pet: Bird | Fish): pet is Fish{       //pet is Fish
+function isFish(pet: Bird | Fish): pet is Fish{       //pet is Fishg
     return (pet as Fish).swim !== undefined
 }
 
