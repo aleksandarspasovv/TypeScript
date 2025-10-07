@@ -12,4 +12,3 @@ function countOccurences<T>(arr: T[]): Record<string, number> {
 const numbers = [1, 2, 3, 4, 4, 4, 4, 4];
 const result = countOccurences(numbers);
 
-console.log(result);
