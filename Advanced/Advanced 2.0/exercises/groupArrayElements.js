@@ -14,3 +14,4 @@ var data = [
     { category: 'vegetable', name: 'carrot' },
     { category: 'fruit', name: 'banana' },
 ];
+console.log(groupBy(data, 'category'));
