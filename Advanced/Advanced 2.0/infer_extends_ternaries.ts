@@ -37,3 +37,4 @@ const a: New<O> = {  //age and name have gone undefined
 
 // -readonly => removes readonly
 // -? -> removes optional parameters
+
