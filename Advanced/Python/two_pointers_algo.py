@@ -1,6 +1,6 @@
 class Solution:
 
-    def twoSum(self, numbers, target):
+    def twoSum(self, numbers, target):     #Two Sum II -> cllassic amazaon question
         l = 0
         r = n - 1
         n = len(numbers)
@@ -15,4 +15,19 @@ class Solution:
             else:
                 r -= 1
 
-                
+
+
+# Two Pointer Algo -> Palindrome check the word RACECAR
+
+def isPalindrome(string):
+    n = len(string)
+    l = 0
+    r = n-1
+
+    while l <= r:
+        if string[l] == string[r]:
+            l += 1
+            r -= 1
+        else:
+            return False
+    return True
