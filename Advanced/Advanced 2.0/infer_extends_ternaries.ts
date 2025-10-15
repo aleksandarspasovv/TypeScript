@@ -18,3 +18,23 @@ type KeyValueSplitter<T extends string> = T extends `${infer K}:${infer V}` ? {
 } : never
 
 type A = KeyValueSplitter<'name:Alex'>
+
+// Objects
+
+type O = {
+    name: string,
+    age: number,
+}
+
+type New<T> = {
+    [P in keyof T as `get${Capitalize<P & string>}`]: () =>  T[P]   // get every single key inside my type of P
+}
+
+const a: New<O> = {  //age and name have gone undefined 
+    getName: () => 'dsds',
+    getAge: () => 123 
+}
+
+// -readonly => removes readonly
+// -? -> removes optional parameters
+
